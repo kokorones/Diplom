@@ -1,0 +1,80 @@
+﻿<Page x:Class="WpfApp1.AddEditPage1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditPage1">
+
+    <Grid  Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Код должности" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   FontSize="12" 
+                   VerticalAlignment="Center" 
+                   Padding="10" 
+                   Foreground="#fff" 
+                   Background="#272537"
+                   Margin="20,13" 
+                   >
+
+        </TextBlock>
+
+        <TextBlock 
+            Text="Название должности" 
+            Grid.Row="1" 
+            Grid.Column="0" 
+            FontSize="12" 
+            VerticalAlignment="Center" 
+            Padding="10" 
+            Foreground="#fff" 
+            Background="#272537" 
+            Margin="20,13">
+
+        </TextBlock>
+
+        <TextBox Text="{Binding PositionCode}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"  Padding="5" FontSize="16" Margin="10,0,20,0" Height="38"></TextBox>
+        <TextBox Text="{Binding Name}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  Padding="5" FontSize="16" Margin="10,0,20,0" Height="38"></TextBox>
+        
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="3">
+            <Button Content="Сохранить"
+                    FontSize="12" 
+                    Padding="5" 
+                    Name="BtnSave"
+                    Click="BtnSave_Click"
+                    HorizontalAlignment="Right" 
+                    Margin="70 0 0 0" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50">
+
+            </Button>
+            <Button Content="Отмена"
+                    FontSize="12" 
+                    Padding="5" 
+                    Name="BtnBack"
+                    Click="BtnBack_Click"
+                    HorizontalAlignment="Right" 
+                    Margin="70,75,0,75" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"/>
+        </StackPanel>
+    </Grid>
+</Page>

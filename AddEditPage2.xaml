@@ -1,0 +1,78 @@
+﻿<Page x:Class="WpfApp1.AddEditPage2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditPage2">
+
+    <Grid Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="24*"/>
+                <RowDefinition Height="76.8"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Код сотрудника" Grid.Row="0" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,1,19.6,1.4" Height="44"></TextBlock>
+            <TextBlock Text="Ф.И.О" Grid.Row="1" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,1.6,19.6,0.8" Height="44"></TextBlock>
+            <TextBlock Text="Пол" Grid.Row="2" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,1.2,19.6,1.2" Height="44"></TextBlock>
+            <TextBlock Text="Дата рождения" Grid.Row="3" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,0.8,19.6,1.6" Height="44"></TextBlock>
+            <TextBlock Text="Должность" Grid.Row="4" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,1.4,19.6,1" Height="44"></TextBlock>
+            <TextBlock Text="Телефон" Grid.Row="5" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,1,19.6,1.4" Height="44"></TextBlock>
+            <TextBlock Text="Адрес" Grid.Row="6" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,1.6,19.6,0.8" Height="44"></TextBlock>
+            <TextBlock Text="Прием" Grid.Row="7" Grid.Column="0" FontSize="12" VerticalAlignment="Center" Padding="10" Foreground="#fff" Background="#272537" Margin="20,2.2,19.6,1.8" Height="44"></TextBlock>
+
+
+            <TextBox Text="{Binding Personnel_Number}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Padding="5" FontSize="16" Margin="10.4,4,20,4.4" Height="38"></TextBox>
+            <TextBox Text="{Binding FIO}" MaxLength="100" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  Padding="5" FontSize="16" Margin="10.4,4.6,20,3.8" Height="38"></TextBox>
+            <TextBox Text="{Binding Gender}" MaxLength="1" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="16"  Padding="5" Margin="10.4,4.2,20,4.2" Height="38"></TextBox>
+
+            <DatePicker SelectedDate="{Binding DateBirthday}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="16"  Padding="5" Margin="10.4,3.8,20,4.6" Height="38"></DatePicker>
+            <ComboBox SelectedItem="{Binding Positioninformation}" x:Name="ComboPosition" DisplayMemberPath="Name" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  Padding="5" FontSize="16" Margin="10.4,4.4,20,4" Height="38"></ComboBox>
+            <TextBox Text="{Binding Phone}" MaxLength="20" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Padding="5" FontSize="16" Margin="10.4,4,20,4.4" Height="38"></TextBox>
+            <TextBox Text="{Binding Adress}" MaxLength="50" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Padding="5" FontSize="16" Margin="10.4,4.6,20,3.8" Height="38"></TextBox>
+            <DatePicker SelectedDate="{Binding DateReceipt}" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" FontSize="16" Margin="10.4,6.2,20,3.8"  Padding="5" Height="38"/>
+            <StackPanel Grid.Row="8" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,7.2,0,-0.4">
+                <Button Content="Сохранить"
+                    FontSize="12" 
+                    Padding="5" 
+                    Name="BtnSave" 
+                    HorizontalAlignment="Left" 
+                    Margin="70 0 0 0" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                        Click="BtnSave_Click">
+
+                </Button>
+                <Button Content="Отмена"
+                    FontSize="12" 
+                    Padding="5" 
+                    Name="BtnBack" 
+                    Click="BtnBack_Click"
+                    HorizontalAlignment="Right" 
+                    Margin="70 0 0 0" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>

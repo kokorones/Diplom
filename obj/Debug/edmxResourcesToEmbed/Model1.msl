@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Personnel_DepartmentModelContainer" CdmEntityContainer="Personnel_DepartmentEntities">
+    <EntitySetMapping Name="EducationDocuments">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.EducationDocument">
+        <MappingFragment StoreEntitySet="EducationDocument">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PersonnelNumber" ColumnName="PersonnelNumber" />
+          <ScalarProperty Name="Document_number" ColumnName="Document_number" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+          <ScalarProperty Name="EducationlInstitution" ColumnName="EducationlInstitution" />
+          <ScalarProperty Name="DateReceipt" ColumnName="DateReceipt" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Generalinformations">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.Generalinformation">
+        <MappingFragment StoreEntitySet="Generalinformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Personnel_Number" ColumnName="Personnel_Number" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateBirthday" ColumnName="DateBirthday" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="DateReceipt" ColumnName="DateReceipt" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medical_cards">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.Medical_cards">
+        <MappingFragment StoreEntitySet="Medical_cards">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PersonnelNumber" ColumnName="PersonnelNumber" />
+          <ScalarProperty Name="Name_group" ColumnName="Name_group" />
+          <ScalarProperty Name="Insurance_OMC" ColumnName="Insurance_OMC" />
+          <ScalarProperty Name="Snils" ColumnName="Snils" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Militaries">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.Military">
+        <MappingFragment StoreEntitySet="Military">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PersonnelNumber" ColumnName="PersonnelNumber" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+          <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PassportDocuments">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.PassportDocument">
+        <MappingFragment StoreEntitySet="PassportDocument">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PersonnelNumber" ColumnName="PersonnelNumber" />
+          <ScalarProperty Name="NumberSeries" ColumnName="NumberSeries" />
+          <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+          <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positioninformations">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.Positioninformation">
+        <MappingFragment StoreEntitySet="Positioninformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Personnel_DepartmentModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

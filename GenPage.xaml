@@ -1,0 +1,124 @@
+﻿<Page x:Class="WpfApp1.GenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GenPage">
+
+    <Grid>
+        <!--Создание формы страницы--> 
+        <Border CornerRadius="15"
+            Background="#272537">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70*"/>
+                    <RowDefinition Height="419*"/>
+                    <RowDefinition Height="70*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="330*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <!--Создание кнопки для страницы-->
+                    <Button Content="Выйти"
+                            HorizontalAlignment="Right"
+                    VerticalContentAlignment="Center"
+                             Foreground="White"
+                        Background="#272537"
+                                Height="40"
+                                Width="150"
+                            Margin="20 0 20 0"
+                                Name="Exit_btn"
+                                Click="Exit_btn_Click" >
+                    </Button>
+                </Grid>
+                <Image  Source="/Resources/logo.png" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0.4"/>
+                <Grid Grid.RowSpan="2" Margin="0,4.6,0,-0.6" Grid.Row="1">
+                    <StackPanel Orientation="Vertical" Margin="0,0,0,0" >
+                        <!--Должности -->
+                        <Button Content="Код должности"
+                    Height="50"
+                    VerticalContentAlignment="Center"
+                             Foreground="White"
+                        Background="#272537"
+                                Name="Position_Btn"
+                                Click="Position_Btn_Click" Style="{DynamicResource RoundedButton}">
+
+                        </Button>
+                        <!--Паспортные данные -->
+                        <Button Content="Паспортные данные"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                              Foreground="White"
+                        Background="#272537"
+                                Name="Passport_Btn"
+                                Click="Passport_Btn_Click" Style="{DynamicResource RoundedButton}">
+
+                        </Button>
+                        <!--Образование -->
+                        <Button Content="Образование сотрудников"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                              Foreground="White"
+                        Background="#272537"
+                                Name="Education_Btn"
+                                Click="Education_Btn_Click" Style="{DynamicResource RoundedButton}">
+
+                        </Button>
+                        <!--Общая информация -->
+                        <Button Content="Общая информация"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                             Foreground="White"
+                        Background="#272537"
+                                Name="Info_btn"
+                                Click="Info_btn_Click" Style="{DynamicResource RoundedButton}">
+
+                        </Button>
+
+                        <!--Военный билет -->
+                        <Button Content="Военный билет"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                             Foreground="White"
+                        Background="#272537"
+                                Name="MilBtn"
+                                Click="MilBtn_Click" Style="{DynamicResource RoundedButton}">
+
+                        </Button>
+                        <!-- Медицинские карты -->
+                        <Button Content="Медицинские карты"
+                    Height="40"
+                    VerticalContentAlignment="Center"
+                             Foreground="White"
+                        Background="#272537"
+                                Name="Medical_btn"
+                                Click="Medical_btn_Click" Style="{DynamicResource RoundedButton}">
+                        </Button>
+                        <!--Кнопка работа с документами-->
+                        <Button  Content="Документы"
+                                 Height="40"
+                    VerticalContentAlignment="Center"
+                             Foreground="White"
+                        Background="#272537"
+                                 Name="ButtonDocument"
+                                 Click="ButtonDocument_Click">
+                            
+                        </Button>
+                    </StackPanel>
+                    
+                    
+
+                </Grid>
+                <!--Формирование области для активного перехода-->
+                <Frame Name="MainFrame1" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.RowSpan="3" Margin="0,62,0,0"/>
+            </Grid>
+        </Border>
+        
+    </Grid>
+</Page>

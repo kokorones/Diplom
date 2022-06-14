@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Personnel_DepartmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EducationDocument">
+    <Key>
+      <PropertyRef Name="Document_number" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonnelNumber" Type="Int32" Nullable="false" />
+    <Property Name="Document_number" Type="Int32" Nullable="false" />
+    <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Specialty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EducationlInstitution" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateReceipt" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Generalinformation" Relationship="Self.FK_EducationDocument_Generalinformation1" FromRole="EducationDocument" ToRole="Generalinformation" />
+  </EntityType>
+  <EntityType Name="Generalinformation">
+    <Key>
+      <PropertyRef Name="Personnel_Number" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Personnel_Number" Type="Int32" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DateBirthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PositionCode" Type="Int32" Nullable="false" />
+    <Property Name="DateReceipt" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EducationDocuments" Relationship="Self.FK_EducationDocument_Generalinformation1" FromRole="Generalinformation" ToRole="EducationDocument" />
+    <NavigationProperty Name="Positioninformation" Relationship="Self.FK_Generalinformation_Positioninformation" FromRole="Generalinformation" ToRole="Positioninformation" />
+    <NavigationProperty Name="Medical_cards" Relationship="Self.FK_Medical_cards_Generalinformation1" FromRole="Generalinformation" ToRole="Medical_cards" />
+    <NavigationProperty Name="Militaries" Relationship="Self.FK_Military_Generalinformation1" FromRole="Generalinformation" ToRole="Military" />
+    <NavigationProperty Name="PassportDocuments" Relationship="Self.FK_PassportDocument_Generalinformation1" FromRole="Generalinformation" ToRole="PassportDocument" />
+  </EntityType>
+  <EntityType Name="Medical_cards">
+    <Key>
+      <PropertyRef Name="Insurance_OMC" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonnelNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name_group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Insurance_OMC" Type="Int32" Nullable="false" />
+    <Property Name="Snils" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Generalinformation" Relationship="Self.FK_Medical_cards_Generalinformation1" FromRole="Medical_cards" ToRole="Generalinformation" />
+  </EntityType>
+  <EntityType Name="Military">
+    <Key>
+      <PropertyRef Name="Series" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonnelNumber" Type="Int32" Nullable="false" />
+    <Property Name="Series" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Number" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Generalinformation" Relationship="Self.FK_Military_Generalinformation1" FromRole="Military" ToRole="Generalinformation" />
+  </EntityType>
+  <EntityType Name="PassportDocument">
+    <Key>
+      <PropertyRef Name="NumberSeries" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonnelNumber" Type="Int32" Nullable="false" />
+    <Property Name="NumberSeries" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Citizenship" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Generalinformation" Relationship="Self.FK_PassportDocument_Generalinformation1" FromRole="PassportDocument" ToRole="Generalinformation" />
+  </EntityType>
+  <EntityType Name="Positioninformation">
+    <Key>
+      <PropertyRef Name="PositionCode" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PositionCode" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Generalinformations" Relationship="Self.FK_Generalinformation_Positioninformation" FromRole="Positioninformation" ToRole="Generalinformation" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EducationDocument_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="EducationDocument" Type="Self.EducationDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="EducationDocument">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Generalinformation_Positioninformation">
+    <End Role="Positioninformation" Type="Self.Positioninformation" Multiplicity="1" />
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positioninformation">
+        <PropertyRef Name="PositionCode" />
+      </Principal>
+      <Dependent Role="Generalinformation">
+        <PropertyRef Name="PositionCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Medical_cards_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="Medical_cards" Type="Self.Medical_cards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="Medical_cards">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Military_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="Military" Type="Self.Military" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="Military">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PassportDocument_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="PassportDocument" Type="Self.PassportDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="PassportDocument">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Personnel_DepartmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EducationDocuments" EntityType="Self.EducationDocument" />
+    <EntitySet Name="Generalinformations" EntityType="Self.Generalinformation" />
+    <EntitySet Name="Medical_cards" EntityType="Self.Medical_cards" />
+    <EntitySet Name="Militaries" EntityType="Self.Military" />
+    <EntitySet Name="PassportDocuments" EntityType="Self.PassportDocument" />
+    <EntitySet Name="Positioninformations" EntityType="Self.Positioninformation" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_EducationDocument_Generalinformation1" Association="Self.FK_EducationDocument_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformations" />
+      <End Role="EducationDocument" EntitySet="EducationDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Generalinformation_Positioninformation" Association="Self.FK_Generalinformation_Positioninformation">
+      <End Role="Positioninformation" EntitySet="Positioninformations" />
+      <End Role="Generalinformation" EntitySet="Generalinformations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Medical_cards_Generalinformation1" Association="Self.FK_Medical_cards_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformations" />
+      <End Role="Medical_cards" EntitySet="Medical_cards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Military_Generalinformation1" Association="Self.FK_Military_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformations" />
+      <End Role="Military" EntitySet="Militaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PassportDocument_Generalinformation1" Association="Self.FK_PassportDocument_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformations" />
+      <End Role="PassportDocument" EntitySet="PassportDocuments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

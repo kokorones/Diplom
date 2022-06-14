@@ -1,0 +1,121 @@
+﻿<Page x:Class="WpfApp1.Education"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Education">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="0,50,0,1" Grid.RowSpan="2">
+            <TextBlock 
+                       Text="Выберите номер сотрудника:"
+                       FontSize="14" Foreground="#272537"
+                       VerticalAlignment="Center"
+                FontWeight="Bold" 
+                 Margin="10,9,0,9.4">
+
+            </TextBlock>
+            <TextBox   x:Name="Search_Education" TextChanged="Search_Education_TextChanged"  VerticalAlignment="Center" FontSize="12" Width="100" Margin="10" HorizontalAlignment="Left">
+            </TextBox>
+
+
+        </StackPanel>
+        <TextBlock Grid.Row="0" 
+                   Text="Информация об образовании:" 
+                   VerticalAlignment="Center" 
+                   FontSize="24" 
+                   HorizontalAlignment="Left" 
+                   FontWeight="Bold" 
+                   Margin="10,9,0,9" 
+                   Height="32" 
+                   Width="auto"
+                   Foreground="#272537"/>
+        <DataGrid x:Name="DGridEducation" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  Grid.Row="2"
+                  HorizontalGridLinesBrush="#272537"
+                  VerticalGridLinesBrush="#272537">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код Сотрудник" Binding="{Binding Generalinformation.Personnel_Number}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="№ Диплома" Binding="{Binding Document_number}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Образование"  Binding="{Binding Education}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Специальность"  Binding="{Binding Specialty}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Учреждение"  Binding="{Binding EducationlInstitution}" Width="150*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Поступление"  Binding="{Binding DateReceipt, StringFormat=d}" Width="100*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Окончание"  Binding="{Binding ExpirationDate, StringFormat=d}" Width="100*" ></DataGridTextColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="BtnEdit2" Click="BtnEdit2_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить"  
+                    Grid.Row="2" 
+                    Grid.Column="0"
+                    HorizontalAlignment="Right" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="BtnAdd"
+                    Click="BtnAdd_Click">
+
+                </Button>
+
+                <Button Content="Удалить"  
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="BtnDelete"
+                    Click="BtnDelete_Click">
+
+                </Button>
+                <Button
+                    Content="Отчетность"
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="BtnExp"
+                    Click="BtnExp_Click">
+                    
+                </Button>
+            </StackPanel>
+            
+
+
+
+        </Grid>
+    </Grid>
+</Page>

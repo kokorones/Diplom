@@ -1,0 +1,98 @@
+﻿<Page x:Class="WpfApp1.Position"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Position">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="363*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" 
+                   Text="Должности:" 
+                   VerticalAlignment="Center" 
+                   FontSize="24" 
+                   HorizontalAlignment="Left" 
+                   FontWeight="Bold" 
+                   Margin="10,9,0,9" 
+                   Height="32" 
+                   Width="141"
+                   Foreground="White"
+                   FontFamily="Canadara"/>
+
+        <DataGrid x:Name="DGridPosition" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  Grid.Row="1"
+                  HorizontalGridLinesBrush="#272537"
+                  VerticalGridLinesBrush="#272537">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код должности"  Binding="{Binding PositionCode}" Width="100" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Название должности"  Binding="{Binding Name}" Width="*"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="BtnEdit4" Click="BtnEdit4_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить"  
+                    Grid.Row="2" 
+                    Grid.Column="0" 
+                    HorizontalAlignment="Right" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="BtnAdd4"
+                    Click="BtnAdd4_Click">
+
+                </Button>
+
+                <Button Content="Удалить"  
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="10" VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="BtnDelite4"
+                    Click="BtnDelite4_Click">
+
+                </Button>
+                <Button
+                    Content="Отчетность"
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="10" VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="Exp"
+                    Click="Exp_Click">
+                    
+                </Button>
+            </StackPanel>
+            
+        </Grid>
+    </Grid>
+</Page>

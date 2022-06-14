@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Personnel_DepartmentModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EducationDocument">
+    <Key>
+      <PropertyRef Name="Document_number" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonnelNumber" Type="int" Nullable="false" />
+    <Property Name="Document_number" Type="int" Nullable="false" />
+    <Property Name="Education" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Specialty" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EducationlInstitution" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateReceipt" Type="date" Nullable="false" />
+    <Property Name="ExpirationDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Generalinformation">
+    <Key>
+      <PropertyRef Name="Personnel_Number" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Personnel_Number" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DateBirthday" Type="date" Nullable="false" />
+    <Property Name="PositionCode" Type="int" Nullable="false" />
+    <Property Name="DateReceipt" Type="date" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Adress" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medical_cards">
+    <Key>
+      <PropertyRef Name="Insurance_OMC" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonnelNumber" Type="int" Nullable="false" />
+    <Property Name="Name_group" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Insurance_OMC" Type="int" Nullable="false" />
+    <Property Name="Snils" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Military">
+    <Key>
+      <PropertyRef Name="Series" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonnelNumber" Type="int" Nullable="false" />
+    <Property Name="Series" Type="nchar" MaxLength="2" Nullable="false" />
+    <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateOfIssue" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PassportDocument">
+    <Key>
+      <PropertyRef Name="NumberSeries" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonnelNumber" Type="int" Nullable="false" />
+    <Property Name="NumberSeries" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="DateOfIssue" Type="date" Nullable="false" />
+    <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Citizenship" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positioninformation">
+    <Key>
+      <PropertyRef Name="PositionCode" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PositionCode" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EducationDocument_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="EducationDocument" Type="Self.EducationDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="EducationDocument">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Generalinformation_Positioninformation">
+    <End Role="Positioninformation" Type="Self.Positioninformation" Multiplicity="1" />
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positioninformation">
+        <PropertyRef Name="PositionCode" />
+      </Principal>
+      <Dependent Role="Generalinformation">
+        <PropertyRef Name="PositionCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Medical_cards_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="Medical_cards" Type="Self.Medical_cards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="Medical_cards">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Military_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="Military" Type="Self.Military" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="Military">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PassportDocument_Generalinformation1">
+    <End Role="Generalinformation" Type="Self.Generalinformation" Multiplicity="1" />
+    <End Role="PassportDocument" Type="Self.PassportDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Generalinformation">
+        <PropertyRef Name="Personnel_Number" />
+      </Principal>
+      <Dependent Role="PassportDocument">
+        <PropertyRef Name="PersonnelNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище Personnel_DepartmentModelContainer">
+    <EntitySet Name="EducationDocument" EntityType="Self.EducationDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Generalinformation" EntityType="Self.Generalinformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medical_cards" EntityType="Self.Medical_cards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Military" EntityType="Self.Military" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PassportDocument" EntityType="Self.PassportDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Positioninformation" EntityType="Self.Positioninformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EducationDocument_Generalinformation1" Association="Self.FK_EducationDocument_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformation" />
+      <End Role="EducationDocument" EntitySet="EducationDocument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Generalinformation_Positioninformation" Association="Self.FK_Generalinformation_Positioninformation">
+      <End Role="Positioninformation" EntitySet="Positioninformation" />
+      <End Role="Generalinformation" EntitySet="Generalinformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Medical_cards_Generalinformation1" Association="Self.FK_Medical_cards_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformation" />
+      <End Role="Medical_cards" EntitySet="Medical_cards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Military_Generalinformation1" Association="Self.FK_Military_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformation" />
+      <End Role="Military" EntitySet="Military" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PassportDocument_Generalinformation1" Association="Self.FK_PassportDocument_Generalinformation1">
+      <End Role="Generalinformation" EntitySet="Generalinformation" />
+      <End Role="PassportDocument" EntitySet="PassportDocument" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

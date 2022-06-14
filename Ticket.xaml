@@ -1,0 +1,114 @@
+﻿<Page x:Class="WpfApp1.Ticket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Ticket">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   
+                   Text="Военный билет:" 
+                   VerticalAlignment="Center" 
+                   FontSize="24" 
+                   HorizontalAlignment="Left" 
+                   FontWeight="Bold" 
+                   Margin="10,9,0,9.4" 
+                   Height="32" 
+                   Width="248"
+                   Foreground="#272537"/>
+        <StackPanel Orientation="Horizontal" Margin="0,50,0,1" Grid.RowSpan="2">
+            <TextBlock 
+                       Text="Выберите номер сотрудника:"
+                       FontSize="14" Foreground="#272537"
+                       VerticalAlignment="Center"
+                FontWeight="Bold" 
+                 Margin="10,9,0,9.4">
+
+            </TextBlock>
+            <TextBox   x:Name="Search_Ticket" TextChanged="Search_Ticket_TextChanged"  VerticalAlignment="Center" FontSize="12" Width="100" Margin="10" HorizontalAlignment="Left">
+            </TextBox>
+
+
+        </StackPanel>
+
+        <DataGrid x:Name="DGridMilitary" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код сотрудника"  Binding="{Binding Generalinformation.Personnel_Number}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Серия билета" Binding="{Binding Series}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер билета" Binding="{Binding Number}" Width="auto" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата получения"  Binding="{Binding DateOfIssue, StringFormat=d}" Width="auto"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="Кем выдан"  Binding="{Binding IssuedBy}" Width="150*" ></DataGridTextColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="BtnEdit3" Click="BtnEdit3_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3" Margin="0,0,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,0,3.2,-0.4">
+                <Button Content="Добавить"  
+                    Grid.Row="2" 
+                    Grid.Column="0" 
+                    HorizontalAlignment="Right" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="AddBtn3"
+                    Click="AddBtn3_Click">
+
+                </Button>
+                <Button Content="Удалить"  
+                    Grid.Row="2" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="Delete"
+                    Click="Delete_Click">
+
+                </Button>
+                <Button
+                    Content="Отчетность"
+                    Grid.Row="2"
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="10" 
+                    VerticalAlignment="Center" 
+                    Width="120"
+                    Foreground="White"
+                    Background="#272537"
+                    Height="50"
+                    Name="Exp"
+                    Click="Exp_Click">
+
+                </Button>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>
